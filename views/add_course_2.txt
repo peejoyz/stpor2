@@ -1,0 +1,161 @@
+SELECT m.*, g.Generic_Name, z.Manufacturer_Name, p.Category 
+FROM medicine_information m INNER JOIN drug_generic_name g 
+on m.Generic_ID = g.ID INNER JOIN manufacturer z on m.Manufacturer_ID = z.ID 
+INNER JOIN category p on m.Category_ID = p.ID
+
+
+
+    var matric_no = req.body.matric_no;
+    var password = req.body.password;
+    var hash = password;
+    password = hash;
+
+    bcrypt.compare(password, hash, function(err, res){
+        if(err) {
+            console.log(err)
+        }  else if (!isMatch) {
+            console.log("password doesn't match!")
+        }  else {
+
+        }
+
+            if(matric_no && password) {
+                let query = "SELECT * FROM student_information WHERE matric_no = matric_no AND password = password";
+
+                db.query(query,(err, result) => {
+
+                    if(err){
+                        console.log(err)
+                    }
+                    if(result.length > 0 ) {
+                        req.session.matric_no = matric_no;
+                        res.redirect('/user/portal');
+                       
+                    } else {
+                        res.send("Incorrect username and/or password");
+                    }
+                   
+
+                })               
+                
+            } 
+            else {
+                res.send('pls enter username and password');
+            }
+        
+    })
+
+
+    bcrypt.compare(password, hash, function(err, res) {             
+
+            if(matric_no && password) { 
+                if (password == hash) { 
+
+                    db.query('SELECT * FROM student_information WHERE matric_no = ? AND password = ?', [matric_no, password], function(error, result, fields) {
+
+                        if(error) {
+                            console.log(error)
+                        } 
+                                    if(result.length > 0) {
+                                    req.session.matric_no = matric_no;
+                                    res.redirect('/portal');
+                                    }
+                
+                                    
+                    })
+                } 
+            
+                else {
+                    res.send('Incorrect matric_no and/or password');
+                }
+            }
+                
+            else {
+                res.send('pls enter username and password')
+                    
+            }
+            
+    })
+
+
+    var matric_no = req.body.matric_no;
+    password = req.body.password;
+    hash = password;
+         
+        if(matric_no && password) {
+            bcrypt.compare('password', hash, function(err, hash) {
+                if(err) {
+                    throw err;
+                } 
+                if('password' == hash) {
+                    let query = "SELECT * FROM `student_information` WHERE matric_no = matric_no AND password = password"; 
+                        db.query (query, function(err, result) {
+                            if(err) {
+                                console.log(err)
+                            }
+
+                            if(result.length > 0) {
+                                req.session.matric_no = matric_no;
+                                res.redirect('/portal');
+                            }
+                            else {
+                                res.send("Incorrect username and/or password");
+                            }
+                        })
+                }
+            });
+            
+            
+        } else  {
+            res.send('pls enter username and password');
+        } 
+
+
+         let query = "SELECT * FROM `student_information` WHERE matric_no = matric_no";
+
+    db.query(query, function(err, result) {
+        if(err) {
+            console.log(err)
+        }
+        
+    }).then(function (user){
+        if(!user) {
+            res.redirect('/')
+        } else {
+            bcrypt.compare(req.body.password, hash, function(err, result){
+                if(result == true){
+                    console.log('hello');
+                    res.redirect('/portal');
+                } else {
+                    res.send('Incorrect matric and/or password');
+                    res.redirect('/')
+                }
+            });
+        }
+    });
+
+
+     var matric_no = req.body.matric_no;
+   
+        let query = "SELECT * FROM `student_information` WHERE matric_no = matric_no";
+
+        db.query(query, function(err, user){
+            if(err) {
+                console.log(err);
+            }if(matric_no) {
+
+                bcrypt.compare(req.body.password, user.password, function(err, result) {
+                    if(result) {
+                        console.log('Hello')
+                        res.redirect('/portal');
+                    } else {
+                        console.log('Incorrect')
+                       
+                    }
+                })
+            } else {
+                res.send('Enter username and password');
+            }
+                    
+                
+        })

@@ -1,0 +1,59 @@
+
+        <%- include('../layouts/regheader.ejs') %>
+
+        <br>
+
+    <div class="container">
+         <% if(message != '') { %>
+            <p class="text-center text-danger"> <%=message %> </p>
+        <% } %>
+
+        
+        <form action="" method="post" enctype="multipart/form-data">
+        
+            <div class="col-md-6 col-offset-3">
+                <div class="input group">
+                    <label for="Full Name">Full Name</label>
+                    <input type="text" class="form-control" name="full_name" id="full_name">
+                </div>
+
+                <div class="input group">
+                    <label for="Matric_no">Matric_no</label>
+                    <input type="text" class="form-control" name="matric_no" id="matric_no">
+                </div>
+
+                <div class="input group">
+                    <label for="Password">Password</label>
+                    <input type="password" class="form-control" name="password" id="password">
+                    <span toggle="#password-field" type="password" onclick="myFunction()" class="fa fa-fw fa-eye field-icon toggle-password" style="cursor: pointer;"></span>
+                </div>
+
+                <div class="input group">
+                    <label for="Currentlevel">Currentlevel</label>
+                    <input type="text" class="form-control" name="current_level" id="current_level">
+                </div>
+
+                <div class="input group">
+                    <label for="Department">Department</label>
+                    <input type="text" class="form-control" name="department" id="department">
+                </div>
+
+                <div class="input group">
+                    <label for="phone_number">Phone number</label>
+                    <input type="text" class="form-control" name="phone_number" id="phone_number">
+                </div>
+
+                <div class="input group">
+                    <label for="image">Image</label>
+                    <input type="file" name="image" id="image" class="form-control"  onchange="loadFile(event)">
+                </div>
+                    <p>
+                        <img id="output" width="100">
+                    </p>
+                
+                <button type="submit" class="btn btn-primary">Register</button>
+            </div>
+        </form>
+        
+        
+    </div>

@@ -1,0 +1,36 @@
+
+
+
+<%- include('../layouts/admin_header') %>
+
+<h3 class="page-title">Courses</h3>
+<a href="/admin/add_course" class="btn btn-md btn-primary">Add a new Course</a>
+<br><br>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Course title</th>
+            <th>Course Code</th>
+            <th>Department </th>
+            <th>Level</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr> 
+    </thead>
+    <tbody>
+        <% courses.forEach(function(item){ %>
+            <tr>
+                <td><%= item.course_title %></td>
+                <td><%= item.course_code %></td>
+                <td><%= item.department_code %></td>
+                <td><%= item.level %></td>
+                <td><a href="/admin/courses/edit/<%= item.ID %>">Edit</a></td>
+                <td><a  href="/admin/courses/delid=<%= item.ID %>" onclick=" return confirm('Are you sure you want to delete ?')">Delete</a></td>   
+            </tr>
+        <% }) %>
+    </tbody>
+</table>
+
+
+<%- include('../layouts/admin_footer') %> 

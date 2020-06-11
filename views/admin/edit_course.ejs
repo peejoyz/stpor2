@@ -1,0 +1,61 @@
+<%- include('../layouts/admin_header') %>
+
+ <h3 class="page-title">Edit courses</h3>
+ <a href="/admin/courses" class="btn btn-md btn-primary">Back to all courses</a>
+<br><br>
+
+<form method="post" action="">
+
+    <div class="form-group">
+        <label for="">Course_title</label>
+        <input type="text" class="form-control" id="course_title" name="course_title"  value="<%=couInfo.course_title %>">
+    </div>
+
+    <div class="form-group">
+        <label for="Description">Course_code</label>
+        <input type="text" class="form-control" id="course_code" name="course_code" value="<%=couInfo.course_code %>" >
+    </div>
+
+    <div class="form-group">
+        <label for="Level">Select Department</label>
+        <select class="form-control" id="departmentcode" name="departmentcode">
+            <% depInfo.forEach(function(item){ %>
+            <option value="<%= item.ID %>"
+            <% if (item.ID == couInfo.department_ID) { %>
+            selected="selected"
+            <% } %>  >
+            <%= item.department_code %>
+            </option>
+            <% }) %>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="Level">Select Level</label>
+        <select class="form-control" id="levelcode" name="levelcode">
+            <% levInfo.forEach(function(item){ %>
+            <option
+            <% if (item.ID == couInfo.level_ID) { %>
+            selected="selected"
+            <% } %> value="<%= item.id %>" >
+            <%= item.level %>
+            </option>
+            <% }) %>
+        </select>
+    </div>
+
+    
+
+    
+
+    <button class="btn btn-default">update</button>
+</form>
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.1.1/basic.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.1.1/dropzone.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.1.1/dropzone.js"></script>
+
+
+<%- include('../layouts/admin_footer') %> 

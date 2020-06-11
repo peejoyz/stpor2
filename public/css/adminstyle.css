@@ -1,0 +1,54 @@
+.sorting tr:not(.home) {
+    cursor: pointer;
+}
+
+.ui-state-highlight {
+    border: 1px dashed #ccc;
+}
+
+#imgPreview {
+    margin: 20px;
+}
+
+#noimages {
+    width: 100px;
+    height: 100px;
+}
+
+ul.gallery {
+    padding: 0;
+}
+
+ul.gallery li:first-child {
+    margin-left: 0;
+}
+
+ul.gallery li {
+    margin: 20px;
+    display: inline-block;
+    list-style: none;
+}
+
+#navbarsExampleDefault{
+ 	display: inline-block;
+    margin-right: 40px;
+    text-decoration: none;
+}
+
+#navbarsExampleDefault ul li{
+    display: inline-block;
+   margin-right: 40px;
+}
+
+#navbarsExampleDefault ul li a{
+   text-decoration: none;
+}
+
+table.alignmiddle td {
+    vertical-align: middle !important;
+}
+
+#navbarsExampleDefault ul li a:hover{
+    text-decoration: none;
+    color: #fafafa;
+ }

@@ -1,0 +1,47 @@
+<%- include('../layouts/admin_header') %>
+
+ <h3 class="page-title">Add a course</h3>
+ <a href="/admin/courses" class="btn btn-md btn-primary">View all Courses</a>
+<br><br>
+
+<form method="post" action="" >
+
+    <div class="form-group">
+        <label for="">Course title</label>
+        <input type="text" class="form-control" name="course_title" id="course_title">
+    </div>
+
+    <div class="form-group">
+        <label for="Course Name">Course Code</label>
+        <input type="text" class="form-control" id="course_code" name="course_code">
+    </div>
+
+    <div class="form-group">
+        <label for="Department">Department</label>
+        <select class="form-control" id="department_code" name="department_code">
+           <option>Select Department</option>
+           <% departmentcode.forEach(function(item){ %>
+            <option value="<%= item.id %>"> <%= item.department_code %> </option>
+            <% }) %>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="Level">Level</label>
+        <select class="form-control" id="level" name="level">
+            <option>Select level</option>
+            <% levelcode.forEach(function(item) { %>
+            <option value="<%= item.id %>"> <%= item.level %> </option>
+            <% }) %>
+         </select>
+    </div>
+
+    
+    
+
+    <button class="btn btn-default">Submit</button>
+</form>
+
+
+
+<%- include('../layouts/admin_footer') %> 

@@ -1,0 +1,28 @@
+
+<%- include('../layouts/admin_header') %>
+
+<h3 class="page-title">Levels</h3>
+<a href="/admin/add_level" class="btn btn-md btn-primary">Add a new Level</a>
+<br><br>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Level</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr> 
+    </thead>
+    <tbody>
+        <% level.forEach(function(item){ %>
+            <tr>
+                <td><%= item.level %></td>
+                <td><a href="/admin/levels/edit/<%= item.id %>">Edit</a></td>
+                <td><a href="/admin/levels/delid=<%= item.id %>" onclick="return confirm('Are You Sure to Delete?')">Delete</a></td>   
+            </tr>
+        <% }); %>
+    </tbody>
+</table>
+
+
+<%- include('../layouts/admin_footer') %> 

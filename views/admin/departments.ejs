@@ -1,0 +1,31 @@
+
+
+<%- include('../layouts/admin_header') %>
+
+<h3 class="page-title">Departments</h3>
+<a href="/admin/add_department" class="btn btn-md btn-primary">Add a new Department</a>
+<br><br>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Departments Name</th>
+            <th>Departments Code</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr> 
+    </thead>
+    <tbody>
+        <% department.forEach(function(item){ %>
+            <tr>
+                <td><%= item.department_name %></td>
+                <td><%= item.department_code %></td>
+                <td><a href="/admin/departments/edit/<%= item.id %>">Edit</a></td>
+                <td><a  href="/admin/departments/delid=<%= item.id %>" onclick=" return confirm('Are you sure you want to delete ?')">Delete</a></td>   
+            </tr>
+        <% }); %>
+    </tbody>
+</table>
+
+
+<%- include('../layouts/admin_footer') %> 
